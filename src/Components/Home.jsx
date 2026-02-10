@@ -20,28 +20,40 @@ function Home() {
    expense}=useContext(ExpenseContext)
   
   const handleDes=(e)=>{
-    setDescriptionInput(e.target.value)
+   
+    setDescriptionInput((e.target.value).trim())
   }
   const handleAmt=(e)=>{
-    setAmountInput(Number(e.target.value))
+    
+    setAmountInput(+(e.target.value).trim())
   }
     const handleSelect=(e)=>{
-     setSelectInput(e.target.value)
+     setSelectInput((e.target.value).trim())
   }
     const handleDate=(e)=>{
-    setDateInput(e.target.value)
+    
+    setDateInput((e.target.value).trim())
   }
   const handleNotes=(e)=>{
-    setNotesInput(e.target.value)
+ 
+    setNotesInput((e.target.value).trim())
   }
   const handleSubmit=()=>{
+    if(descriptionInput==="")return;
+    if(amountInput==="")return;
+    if(selectInput==="")return;
+    if(dateInput==="")return;
+    if(notesInput==="")return
+    else{
     // setAdd([...add,{id: uuidv4(),descriptionInput,amountInput,selectInput,dateInput,notesInput}])
     addExpensefromList({id: uuidv4(),descriptionInput,amountInput,selectInput,dateInput,notesInput})
+    
     setDescriptionInput("");
     setAmountInput("");
     setSelectInput("food");
     setDateInput("");
     setNotesInput("");
+    }
   }
   // console.log(add)
   const handleView=(item)=>{
