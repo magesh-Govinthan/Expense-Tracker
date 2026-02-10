@@ -213,7 +213,7 @@ button{
      text-align: center;
 
 }
-@media  only screen and(max-width:275px) {
+@media  only screen and(max-width:412px) {
     .exp-tracker{
      margin-top:50px;
     height: 70%;
