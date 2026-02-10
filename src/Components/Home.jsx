@@ -87,8 +87,9 @@ function Home() {
         <div className="exp-child1">
           <label htmlFor="Note">Notes</label>
           <textarea name="Note" placeholder="Write a notes" value={notesInput} onChange={(e)=>handleNotes(e)} />
-        </div>
-        <button type="submit" onClick={()=>handleSubmit()}>Submit</button>
+        </div >
+        
+        <button type="submit" onClick={()=>handleSubmit()}>Submit</button> 
       </div>
       {expense.length>0 &&
       <>
