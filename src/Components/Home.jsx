@@ -52,7 +52,7 @@ function Home() {
   const handleNotes = (e) => {
     setNotesInput(e.target.value.trim());
   };
-  const expenseAllTotal = filterData.reduce(
+  const expenseAllTotal = [...filterData].reduce(
     (acc, ele) => acc + Number(ele.amountInput),
     0,
   );
@@ -120,11 +120,11 @@ function Home() {
   };
 
   const handleCategory = (e) => {
+      setSelectedValue("");
     setCategoryValue(e.target.value);
-    setSelectedValue("");
-
-    if (e.target.value.toLowerCase() === "food") {
-      const filterFood = [...expense].filter(
+  
+  if (e.target.value.toLowerCase() === "food") {
+    const filterFood = [...expense].filter(
         (item) => item.selectInput.toLowerCase() === "food",
       );
       const totalFood = filterFood.reduce(
