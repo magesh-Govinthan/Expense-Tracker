@@ -2,13 +2,14 @@ import { createContext, useReducer } from "react";
 
 const ACTION = {
   SET_EXPENSE_ITEM: "SET_EXPENSE_ITEM",
-  SET_VIEW_ITEM: "SET_VIEW_ITEM"
+  SET_VIEW_ITEM: "SET_VIEW_ITEM",
 };
 
 const initState = {
-expense: [],
-view:{}
-  };
+  expense:  JSON.parse(localStorage.getItem("expenseDetail")) || [],
+  view: {},
+ 
+};
 const expenseReducer = (state, action) => {
   console.log(state, action);
 
@@ -16,43 +17,42 @@ const expenseReducer = (state, action) => {
   switch (type) {
     case ACTION.SET_EXPENSE_ITEM:
       return { ...state, ...payload };
-      case ACTION.SET_VIEW_ITEM:
-        return { ...state, ...payload };
+    case ACTION.SET_VIEW_ITEM:
+      return { ...state, ...payload };
     default:
       throw new Error(`unhandle type in cart reducer ${type}`);
   }
 };
 
 export const ExpenseContext = createContext({
- 
   expense: [],
-  view:{},
-addExpense: () => {},
+  view: {},
+
+  addExpense: () => {},
   removeExpense: () => {},
 });
 const addExpense = (expense, expenseToAdd) => {
-  return [...expense, { ...expenseToAdd}];
+  // const expenseDetailByLocal = JSON.parse(
+  //   localStorage.getItem("expenseDetail"),
+  // )||[]
+
+  return [ ...expense, { ...expenseToAdd }];
 };
 
 const removeExpense = (expense, removeExpense) => {
-    console.log(removeExpense);
-    console.log(expense);
-    
-  return expense.filter((item) => item.id !== removeExpense.id);
+  console.log(removeExpense);
+  console.log(expense);
 
+  return expense.filter((item) => item.id !== removeExpense.id);
 };
 
-
 export const ExpenseProvider = ({ children }) => {
-  const [{expense,view} , dispatch] =
-    useReducer(expenseReducer, initState);
+  const [{ expense, view }, dispatch] = useReducer(expenseReducer, initState);
   const updateExpenseReducer = (expense) => {
-
- 
     const payload = {
-      expense
-      
-     };
+      expense,
+    };
+    localStorage.setItem("expenseDetail", JSON.stringify(payload.expense));
     dispatch({ type: "SET_EXPENSE_ITEM", payload });
   };
   const addExpensefromList = (expenseToAdd) => {
@@ -61,27 +61,27 @@ export const ExpenseProvider = ({ children }) => {
   };
   const removeExpensefromList = (expenseToRemove) => {
     const newExpense = removeExpense(expense, expenseToRemove);
-  if(newExpense.every((item)=>item.id!==expenseToRemove.id)){
-    const payload={view:{}}
-         dispatch({ type: "SET_VIEW_ITEM", payload});
+    if (newExpense.every((item) => item.id !== expenseToRemove.id)) {
+      const payload = { view: {} };
+      dispatch({ type: "SET_VIEW_ITEM", payload });
     }
     updateExpenseReducer(newExpense);
-
   };
-  const viewExpensefromList=(expenseToView)=>{
-  const payload = {
-       view: expenseToView
-     };
+  const viewExpensefromList = (expenseToView) => {
+    const payload = {
+      view: expenseToView,
+    };
     dispatch({ type: "SET_VIEW_ITEM", payload });
-  }
- 
-  const value = {
-   removeExpensefromList,
-   addExpensefromList,
-   viewExpensefromList,
-   expense,
-   view
-    
   };
-  return <ExpenseContext.Provider value={value}>{children}</ExpenseContext.Provider>;
+
+  const value = {
+    removeExpensefromList,
+    addExpensefromList,
+    viewExpensefromList,
+    expense,
+    view,
+  };
+  return (
+    <ExpenseContext.Provider value={value}>{children}</ExpenseContext.Provider>
+  );
 };
