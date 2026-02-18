@@ -52,7 +52,7 @@ function Home() {
   const handleNotes = (e) => {
     setNotesInput(e.target.value.trim());
   };
-  const expenseAllTotal = [...filterData].reduce(
+  const expenseAllTotal = filterData.reduce(
     (acc, ele) => acc + Number(ele.amountInput),
     0,
   );
