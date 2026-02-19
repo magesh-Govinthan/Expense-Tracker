@@ -27,7 +27,7 @@ function Home() {
   const expenseDetailByLocal = JSON.parse(
     localStorage.getItem("expenseDetail"),
   );
-  console.log(expenseDetailByLocal);
+ 
 
   const [filterData, setFliterData] = useState(
     expense.length === 0 ? expenseDetailByLocal : [],
@@ -56,7 +56,7 @@ function Home() {
     (acc, ele) => acc + Number(ele.amountInput),
     0
   ):0
-  console.log(expenseAllTotal);
+  
   const handleSubmit = () => {
     if (descriptionInput === "") return;
     if (amountInput === "") return;
