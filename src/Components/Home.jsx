@@ -26,7 +26,7 @@ function Home() {
   } = useContext(ExpenseContext);
 
   const expenseDetailByLocal = JSON.parse(
-    localStorage.getItem("expenseDetail"),
+    localStorage.getItem("expenseDetail")||[]
   );
  
 
