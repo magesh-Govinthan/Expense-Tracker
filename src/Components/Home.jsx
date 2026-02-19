@@ -25,9 +25,10 @@ function Home() {
     expense,
   } = useContext(ExpenseContext);
 
-  const expenseDetailByLocal = JSON.parse(
-    localStorage.getItem("expenseDetail")||[]
-  );
+  const expenseDetailByLocal =
+  JSON.parse(localStorage.getItem("expenseDetail")) || [];
+
+ 
  
 
   const [filterData, setFliterData] = useState(
@@ -120,7 +121,7 @@ function Home() {
   const handleReset = () => {
     setSelectedValue("");
     setCategoryValue("");
-    filterData([]);
+    setFliterData([])
  
   };
 
