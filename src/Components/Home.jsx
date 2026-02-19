@@ -52,10 +52,10 @@ function Home() {
   const handleNotes = (e) => {
     setNotesInput(e.target.value.trim());
   };
-  const expenseAllTotal = filterData.reduce(
+  const expenseAllTotal = filterData.length>0 ? filterData.reduce(
     (acc, ele) => acc + Number(ele.amountInput),
-    0,
-  );
+    0
+  ):0
   console.log(expenseAllTotal);
   const handleSubmit = () => {
     if (descriptionInput === "") return;
