@@ -310,6 +310,8 @@ function Home() {
                   <div className="exp-child3">
                     <h4>{item.selectInput}</h4>
                   </div>
+                  </div>
+                  <div className="new-exp1">
                   <div>
                     <button className="btn1" onClick={() => handleView(item)}>
                       View
@@ -320,8 +322,9 @@ function Home() {
                       Delete
                     </button>
                   </div>
+                  </div>
                 </div>
-              </div>
+              
             ))}
         </div>
       </>

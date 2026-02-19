@@ -10,14 +10,14 @@
 
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 50px;
+    gap: 10px;
     align-items: center;
     justify-content: center;
 }
 
 .exp-tracker {
     margin-top: 50px;
-    height: 900px;
+    height: 700px;
     width: 500px;
     padding: 20px;
     border: none;
@@ -57,7 +57,7 @@ p {
 
 .exp-child1 {
     height: 70px;
-    width: 450px;
+    width: 350px;
     display: grid;
     grid-template-columns: 1fr 1fr;
     font-size: 25px;
@@ -71,11 +71,12 @@ p {
 
 label {
     background-color: transparent;
+    font-size: large;
 }
 
 .input {
     height: 40px;
-    width: 300px;
+    width: 200px;
     background-color: white;
     border: none;
     box-shadow: 2px 2px 5px 4px #FFDCDC;
@@ -94,7 +95,7 @@ input::placeholder {
 
 select {
     height: 40px;
-    width: 300px;
+    width: 200px;
     font-size: large;
     background-color: white;
     border-radius: 10px;
@@ -111,7 +112,7 @@ select:focus {
 
 textarea {
     height: 70px;
-    width: 300px;
+    width: 200px;
     background-color: white;
     border-radius: 10px;
     box-shadow: 2px 2px 5px 4px #FFDCDC;
@@ -129,14 +130,15 @@ textarea:focus {
 .exp-expenseparent {
     margin-top: 50px;
     height: auto;
-    width: 800px;
-    padding: 20px;
+    width: 600px;
+    padding: 10px;
     border: none;
     background-color: white;
     font-size: large;
     border-radius: 25px;
     box-shadow: 2px 2px 5px 4px #F075AE;
     text-align: center;
+
 
 }
 
@@ -152,7 +154,7 @@ textarea:focus {
     align-items: center;
     justify-content: center;
     height: 80px;
-    width: 750px;
+    width: 550px;
     border: none;
 
     border-radius: 5px;
@@ -192,36 +194,55 @@ textarea:focus {
 }
 
 .exp {
-    height: 90px;
-    width: 750px;
+    height: 120px;
+    width: 550px;
     background-color: whitesmoke;
     padding: 10px;
-
-}
-
-.exp-expense {
-    height: 70px;
-    width: 700px;
-    padding: 10px;
-
+    grid-template-columns: 1fr;
     display: grid;
     background-color: white;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+    margin-top: 20px;
     gap: 10px;
     align-items: center;
     justify-content: center;
     border-radius: 20px;
+
     box-shadow: 2px 2px 5px 4px #EBF4F6;
+}
+
+.exp-expense {
+    height: 50px;
+    width: 550px;
+    padding: 10px;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    display: grid;
+
+    background-color: white;
+
+    gap: 10px;
+
+
 
 
 }
 
+.new-exp1 {
+    height: 30px;
+    width: 300px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    align-items: center;
+    background-color: white;
+    justify-content: center;
+}
+
 .exp-child2 {
 
-    height: 50px;
+    height: 40px;
     width: 100px;
     display: flex;
-    align-items: center;
+    align-items: start;
     justify-content: center;
 
     border: none;
@@ -285,7 +306,7 @@ h4 {
     grid-template-columns: 1fr;
     gap: 20px;
     height: 300px;
-    width: 700px;
+    width: 550px;
     margin-top: 20px;
     padding: 10px;
     background-color: #CD2C58;
@@ -304,7 +325,6 @@ h4 {
     gap: 10px;
     height: 70px;
     width: 500px;
-
     border: 1px;
     border-radius: 25px;
 }
@@ -326,7 +346,7 @@ p {
 .exp-view {
     margin-top: 50px;
     height: 500px;
-    width: 800px;
+    width: 600px;
     padding: 10px;
     border: none;
     background-color: white;
