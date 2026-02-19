@@ -14,6 +14,7 @@ function Home() {
   const [selectedValue, setSelectedValue] = useState("");
   const [categoryValue, setCategoryValue] = useState("");
   const [totalCategory, setTotalCategory] = useState(0);
+  const[totalExpense,settotalExpense]=useState(0);
   const category = ["Food", "Bills", "Travel", "Others"];
 
   const {
@@ -37,6 +38,13 @@ function Home() {
     setFliterData(expense);
   }, [expense]);
 
+  useEffect(()=>{
+   const expenseAllTotal = filterData.length>0 ? filterData.reduce(
+    (acc, ele) => acc + Number(ele.amountInput),
+    0
+  ):0
+  settotalExpense(expenseAllTotal)
+  },[filterData])
   const handleDes = (e) => {
     setDescriptionInput(e.target.value.trim());
   };
@@ -52,10 +60,7 @@ function Home() {
   const handleNotes = (e) => {
     setNotesInput(e.target.value.trim());
   };
-  const expenseAllTotal = filterData.length>0 ? filterData.reduce(
-    (acc, ele) => acc + Number(ele.amountInput),
-    0
-  ):0
+ 
   
   const handleSubmit = () => {
     if (descriptionInput === "") return;
@@ -96,7 +101,7 @@ function Home() {
     setSelectedValue(e.target.value);
     setCategoryValue("");
 
-    setTotalCategory(expenseAllTotal);
+    setTotalCategory(totalExpense);
 
     if (e.target.value === "date") {
       const sortExpensebyDate = [...expense].sort(
@@ -238,7 +243,7 @@ function Home() {
             <div className="expense-con">
               <div>
                 <h1>
-                  Total:{selectedValue === "" ? expenseAllTotal : totalCategory}
+                  Total:{selectedValue === "" ? totalExpense : totalCategory}
                 </h1>
               </div>
               <div className="input-expense">
